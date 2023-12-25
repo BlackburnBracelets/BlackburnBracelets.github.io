@@ -25,6 +25,23 @@ section {
     text-align: center;
 }
 
+/* Add the following styles to center the product grid */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.product-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center; /* Center items vertically */
+    max-width: 900px; /* Set a max-width for better readability */
+}
+
 .product-card {
     border: 1px solid #ccc;
     margin: 10px;
@@ -33,6 +50,7 @@ section {
     box-sizing: border-box; /* Include padding and border in the width */
     display: inline-block; /* Display cards in a line */
     vertical-align: top; /* Align cards to the top */
+    text-align: center; /* Center text inside the card */
 }
 
 .product-card img {
@@ -51,6 +69,7 @@ section {
     font-size: 16px;
     cursor: pointer;
 }
+
 
 
 /* Slideshow styles */
