@@ -23,15 +23,11 @@
         }
         section {
             width: 100%;
-            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-        }
-        .product-grid {
-            background-color: #f4f4f4;
-            padding: 20px;
+            padding: 40px;
+            text-align: center;
         }
         .product-card {
             border: 1px solid #ccc;
@@ -141,64 +137,101 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to Blackburn Bracelets!</h1>
+        <h1>Blackburn Bracelets</h1>
         <nav>
             <ul>
-                <li><a href="#product-section">Products</a></li>
+                <li><a href="#product1-section">Product 1</a></li>
+                <li><a href="#product2-section">Product 2</a></li>
+                <li><a href="#product3-section">Product 3</a></li>
+
+                <!-- Add more product links as needed -->
                 <li><a href="#about-section">About</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="product-section" class="product-grid">
-        <!-- Product 1 with slideshow -->
-        <div class="product-card">
-            <div class="slideshow-container">
-                <div class="mySlides">
-                    <img src="bracelet1_1.jpg" alt="Bead Bracelet 1 - Image 1">
-                </div>
-                <div class="mySlides">
-                    <img src="bracelet1_2.jpg" alt="Bead Bracelet 1 - Image 2">
-                </div>
-                <!-- Add more slides as needed -->
-
-                <!-- Navigation buttons -->
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <section id="product1-section" class="product-card">
+        <div class="slideshow-container">
+            <div class="mySlides">
+                <img src="Images/SunBeam4.jpg" alt="Bead Bracelet 1 - Image 1">
             </div>
+            <div class="mySlides">
+                <img src="Images/SunBeam1.jpg" alt="Bead Bracelet 1 - Image 2">
+            </div>
+            <div class="mySlides">
+                <img src="Images/SunBeam2.jpg" alt="Bead Bracelet 1 - Image 3">
+            </div>
+            <div class="mySlides">
+                <img src="Images/SunBeam3.jpg" alt="Bead Bracelet 1 - Image 4">
+            </div>
+            <!-- Add more slides as needed -->
 
-            <h2>Bead Bracelet 1</h2>
-            <p>$20.00</p>
-            <button type="button" onclick="addToCart('Bead Bracelet 1')">Add to Cart</button>
+            <!-- Navigation buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
 
-        <!-- Product 2 with slideshow (Add more as needed) -->
-        <div class="product-card">
-            <div class="slideshow-container">
-                <div class="mySlides">
-                    <img src="bracelet2_1.jpg" alt="Bead Bracelet 2 - Image 1">
-                </div>
-                <div class="mySlides">
-                    <img src="bracelet2_2.jpg" alt="Bead Bracelet 2 - Image 2">
-                </div>
-                <!-- Add more slides as needed -->
-
-                <!-- Navigation buttons -->
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-
-            <h2>Bead Bracelet 2</h2>
-            <p>$25.00</p>
-            <button type="button" onclick="addToCart('Bead Bracelet 2')">Add to Cart</button>
-        </div>
-
-        <!-- Add more product cards with slideshows as needed -->
+        <h2>SunBeam</h2>
+        <p>$20.00</p>
+        <button type="button" onclick="addToCart('SunBeam')">Add to Cart</button>
     </section>
+
+    <section id="product2-section" class="product-card">
+        <div class="slideshow-container">
+            <div class="mySlides">
+                <img src="Images/MoonLight4.jpg" alt="Bead Bracelet 2 - Image 1">
+            </div>
+            <div class="mySlides">
+                <img src="Images/MoonLight1.jpg" alt="Bead Bracelet 2 - Image 2">
+            </div>
+            <div class="mySlides">
+                <img src="Images/MoonLight2.jpg" alt="Bead Bracelet 2 - Image 3">
+            </div>
+            <div class="mySlides">
+                <img src="Images/MoonLight3.jpg" alt="Bead Bracelet 2 - Image 4">
+            </div>
+            <!-- Add more slides as needed -->
+
+            <!-- Navigation buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+
+        <h2>MoonLight</h2>
+        <p>$25.00</p>
+        <button type="button" onclick="addToCart('MoonLight')">Add to Cart</button>
+    </section>
+
+    <section id="product3-section" class="product-card">
+        <div class="slideshow-container">
+            <div class="mySlides">
+                <img src="Images/GalaxyDust1.jpg" alt="Bead Bracelet 3 - Image 1">
+            </div>
+            <div class="mySlides">
+                <img src="Images/GalaxyDust2.jpg" alt="Bead Bracelet 3 - Image 2">
+            </div>
+            <div class="mySlides">
+                <img src="Images/GalaxyDust3.jpg" alt="Bead Bracelet 3 - Image 3">
+            </div>
+            <div class="mySlides">
+                <img src="Images/GalaxyDust4.jpg" alt="Bead Bracelet 3 - Image 4">
+            </div>
+            <!-- Add more slides as needed -->
+
+            <!-- Navigation buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+
+        <h2>GalaxyDust</h2>
+        <p>$25.00</p>
+        <button type="button" onclick="addToCart('GalaxyDust')">Add to Cart</button>
+    </section>
+    <!-- Add more product sections as needed -->
 
     <!-- About section -->
     <section id="about-section" class="about-section">
-        <img src="profile-picture-placeholder.jpg" alt="Profile Picture" class="profile-picture">
+        <img src="Images/avatar-gen11b89387c3ad5f3009f2fbafb0a2e1ff.jpg" alt="Profile Picture" class="profile-picture">
         <h2>About Blackburn Bracelets</h2>
         <p>Discover the beauty of handmade bead bracelets at Blackburn Bracelets. Our unique designs are crafted with passion and creativity, bringing you the perfect accessories to complement your style.</p>
     </section>
