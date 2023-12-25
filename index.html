@@ -10,15 +10,27 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
         header {
             text-align: center;
             padding: 20px;
+            position: fixed;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            z-index: 1000;
+        }
+        section {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         .product-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+            background-color: #f4f4f4;
             padding: 20px;
         }
         .product-card {
@@ -121,10 +133,15 @@
 <body>
     <header>
         <h1>Welcome to Blackburn Bracelets!</h1>
-        <button class="view-cart-button" onclick="openCartModal()">View Cart</button>
+        <nav>
+            <ul>
+                <li><a href="#product-section">Products</a></li>
+                <li><a href="#about-section">About</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div class="product-grid">
+    <section id="product-section" class="product-grid">
         <!-- Product 1 with slideshow -->
         <div class="product-card">
             <div class="slideshow-container">
@@ -168,7 +185,13 @@
         </div>
 
         <!-- Add more product cards with slideshows as needed -->
-    </div>
+    </section>
+
+    <!-- About section -->
+    <section id="about-section" class="about-section">
+        <h2>About Blackburn Bracelets</h2>
+        <p>Discover the beauty of handmade bead bracelets at Blackburn Bracelets. Our unique designs are crafted with passion and creativity, bringing you the perfect accessories to complement your style.</p>
+    </section>
 
     <!-- Notification div -->
     <div id="notification" class="notification"></div>
@@ -180,12 +203,6 @@
             <h2>Shopping Cart</h2>
             <ul id="cartItems"></ul>
         </div>
-    </div>
-
-    <!-- About section -->
-    <div class="about-section">
-        <h2>About Blackburn Bracelets</h2>
-        <p>Discover the beauty of handmade bead bracelets at Blackburn Bracelets. Our unique designs are crafted with passion and creativity, bringing you the perfect accessories to complement your style.</p>
     </div>
 
     <script>
