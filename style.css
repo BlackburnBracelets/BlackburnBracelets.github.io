@@ -44,29 +44,8 @@ section {
     text-align: center;
 }
 
-/* Add the .glow class to the images you want to have the glowing effect */
-.product-card img.glow {
-    position: relative;
-    z-index: 1;
-}
-
-.product-card img.glow:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: inherit;
-    background: inherit;
-    filter: inherit;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    animation: animate 20s linear infinite;
-}
-
-.product-card img.glow:hover:before {
-    opacity: 1;
+.product-card img {
+    width: 100%;
 }
 
 .product-card button {
@@ -146,7 +125,7 @@ section {
     text-align: center;
 }
 
-.profile-picture.glow {
+.profile-picture {
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -231,46 +210,3 @@ header {
 }
 
 
-button {
-    position: relative;
-    height: 60px;
-    width: 200px;
-    border: none;
-    outline: none;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 18px;
-}
-
-@keyframes animate {
-    0% {
-        transform: rotate(0deg);
-        background-position: 0 0;
-    }
-    100% {
-        transform: rotate(360deg);
-        background-position: 100% 0;
-    }
-}
-
-.button-glow:before {
-    position: absolute;
-    content: '';
-    top: -2px;
-    left: -2px;
-    height: calc(100% + 4px);
-    width: calc(100% + 4px);
-    border-radius: 5px;
-    z-index: -1;
-    opacity: 0;
-    filter: blur(5px);
-    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-    background-size: 400%;
-    transition: opacity 0.3s ease-in-out;
-    animation: animate 20s linear infinite;
-}
-
-.button-glow:hover:before {
-    opacity: 1;
-}
