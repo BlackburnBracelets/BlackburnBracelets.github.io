@@ -90,54 +90,63 @@ function showNotification(message) {
 // Shopping Cart Modal functions
 function addToCartModal(productName) {
   var cartItems = document.getElementById("cartItems");
-  var listItem = document.createElement("li");
+  
+  // Check if the product is already in the cart
+  var existingItem = findCartItem(productName);
 
-  // Create a div for each cart item
-  var cartItemDiv = document.createElement("div");
-  cartItemDiv.className = "cart-item";
+  if (existingItem) {
+      // Update the quantity if the product is already in the cart
+      existingItem.quantity++;
+      updateCartItem(existingItem);
+  } else {
+      // Add a new item to the cart
+      var listItem = document.createElement("li");
+      listItem.dataset.productName = productName;
+      listItem.dataset.quantity = 1;
+      listItem.appendChild(document.createTextNode(productName + " x1"));
+      cartItems.appendChild(listItem);
+  }
+}
 
-  // Display the product name
-  cartItemDiv.appendChild(document.createTextNode(productName));
+// Function to find a cart item by product name
+function findCartItem(productName) {
+  var cartItems = document.getElementById("cartItems").children;
 
-  // Create a dropdown for quantity
-  var quantityDropdown = document.createElement("select");
-  quantityDropdown.id = "quantityDropdown";
-  for (var i = 1; i <= 10; i++) {
-      var option = document.createElement("option");
-      option.value = i;
-      option.text = i;
-      quantityDropdown.appendChild(option);
+  for (var i = 0; i < cartItems.length; i++) {
+      var item = cartItems[i];
+      if (item.dataset.productName === productName) {
+          return {
+              element: item,
+              productName: productName,
+              quantity: parseInt(item.dataset.quantity)
+          };
+      }
   }
 
-  // Append the dropdown to the cart item div
-  cartItemDiv.appendChild(quantityDropdown);
-
-  // Append the cart item div to the list
-  listItem.appendChild(cartItemDiv);
-
-  // Append the list item to the cart items list
-  cartItems.appendChild(listItem);
+  return null;
 }
 
-function checkout() {
-  // Retrieve selected quantity from the dropdown
-  var quantityDropdown = document.getElementById("quantityDropdown");
-  var selectedQuantity = quantityDropdown.value;
-
-  // Perform checkout logic with the selected quantity
-  // For now, let's just show a notification
-  showNotification("Checkout with quantity: " + selectedQuantity);
-  
-  // Close the cart modal
-  closeCartModal();
+// Function to update the cart item
+function updateCartItem(cartItem) {
+  cartItem.element.innerHTML = cartItem.productName + " x" + cartItem.quantity;
+  cartItem.element.dataset.quantity = cartItem.quantity;
 }
 
+// Function to open the cart modal
 function openCartModal() {
-    var cartModal = document.getElementById("cartModal");
-    cartModal.style.display = "block";
+  var cartModal = document.getElementById("cartModal");
+  cartModal.style.display = "block";
 }
 
+// Function to close the cart modal
 function closeCartModal() {
-    var cartModal = document.getElementById("cartModal");
-    cartModal.style.display = "none";
+  var cartModal = document.getElementById("cartModal");
+  cartModal.style.display = "none";
+}
+
+// Function to handle the checkout button
+function checkout() {
+  // Add your checkout logic here
+  // For now, let's just close the cart modal
+  closeCartModal();
 }
