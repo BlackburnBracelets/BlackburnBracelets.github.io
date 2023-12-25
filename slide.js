@@ -1,40 +1,73 @@
-var slideIndex = 1;
-var z = document.getElementsByClassName("slideshow");
-for (i = 0; i < z.length; i++) {
-    //set custom data attribute to first current image index
-    z[i].setAttribute("data-currentslide", 1);
-    showDivs(z[i].getAttribute("data-currentslide"), i);
+// Initialize slide indexes array
+var slideIndexes = [];
+
+// Function to initialize each slideshow
+function initializeSlideshows() {
+  var slideshows = document.getElementsByClassName("slideshow");
+  
+  for (var i = 0; i < slideshows.length; i++) {
+    var initialSlideIndex = 1;
+    
+    // Set custom data attribute to first current image index
+    slideshows[i].setAttribute("data-currentslide", initialSlideIndex);
+    
+    // Initialize the current slide index
+    slideIndexes[i] = initialSlideIndex;
+    
+    // Show the initial slide
+    showDivs(initialSlideIndex, i);
+  }
 }
+
+// Function to navigate to the next or previous slide
 function plusDivs(n, j) {
-    //get custom data attribute value of current image index to slideshow class index j
-    slideIndex = parseInt(z[j].getAttribute("data-currentslide"));
-    showDivs(slideIndex += n, j);
+  // Get custom data attribute value of current image index for slideshow class index j
+  slideIndexes[j] += n;
+  
+  // Show the updated slide
+  showDivs(slideIndexes[j], j);
 }
+
+// Function to navigate to a specific slide
 function currentDiv(n, j) {
-    showDivs(slideIndex = n, j); /* showDivs Not showSlides*/
+  // Show the specified slide
+  showDivs(slideIndexes[j] = n, j);
 }
+
+// Function to display the current slide
 function showDivs(n, j) {
-    var i;
-    var z = document.getElementsByClassName("slideshow")[j];
-    var x = z.getElementsByClassName("mySlides");
-    var dots = z.getElementsByClassName("dot");
-    if (n > x.length) {
-        slideIndex = 1
-    }
-    if (n < 1) {
-        slideIndex = x.length;
-    }
-    //set custom data attribute to current image index
-    z.setAttribute("data-currentslide", slideIndex);
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    x[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
+  var slideshow = document.getElementsByClassName("slideshow")[j];
+  var slides = slideshow.getElementsByClassName("mySlides");
+  var dots = slideshow.getElementsByClassName("dot");
+  
+  // Handle slide index overflow
+  if (n > slides.length) {
+    slideIndexes[j] = 1;
+  }
+  if (n < 1) {
+    slideIndexes[j] = slides.length;
+  }
+  
+  // Set custom data attribute to the current image index
+  slideshow.setAttribute("data-currentslide", slideIndexes[j]);
+  
+  // Hide all slides and remove active class from dots
+  for (var i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (var i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  
+  // Display the current slide and mark the corresponding dot as active
+  slides[slideIndexes[j] - 1].style.display = "block";
+  dots[slideIndexes[j] - 1].className += " active";
 }
+
+// Call the function to initialize slideshows when the DOM is ready
+document.addEventListener("DOMContentLoaded", function () {
+  initializeSlideshows();
+});
 
 function addToCart(productName) {
     // Add your logic for adding to cart here
