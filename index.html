@@ -23,40 +23,44 @@
     </header>
 
     <section id="product1-section" class="product-card">
-        <div class="slideshow-container">
-            <div class="mySlides">
-                <img src="Images/SunBeam4.jpg" alt="Bead Bracelet 1 - Image 1">
+        <div class="slideshow">	
+            <div class="slideshow-container">
+                <div class="mySlides">
+                    <img src="Images/SunBeam4.jpg" alt="Bead Bracelet 1 - Image 1">
+                </div>
+                <div class="mySlides">
+                    <img src="Images/SunBeam1.jpg" alt="Bead Bracelet 1 - Image 2">
+                </div>
+                <div class="mySlides">
+                    <img src="Images/SunBeam2.jpg" alt="Bead Bracelet 1 - Image 3">
+                </div>
+                <div class="mySlides">
+                    <img src="Images/SunBeam3.jpg" alt="Bead Bracelet 1 - Image 4">
+                </div>
+                <!-- Add more slides as needed -->
+    
+                <!-- Navigation buttons -->
+                <a class="prev" onclick="plusDivs(-1, 0)">&#10094;</a>
+                <a class="next" onclick="plusDivs(1, 0)">&#10095;</a>
+                <!-- Extra plusDivs parameter refers to first (0) slideshow (start from 0) -->
             </div>
-            <div class="mySlides">
-                <img src="Images/SunBeam1.jpg" alt="Bead Bracelet 1 - Image 2">
-            </div>
-            <div class="mySlides">
-                <img src="Images/SunBeam2.jpg" alt="Bead Bracelet 1 - Image 3">
-            </div>
-            <div class="mySlides">
-                <img src="Images/SunBeam3.jpg" alt="Bead Bracelet 1 - Image 4">
-            </div>
-            <!-- Add more slides as needed -->
-
-            <!-- Navigation buttons -->
-            <a class="prev" onclick="plusDivs(-1, 0)">&#10094;</a>
-            <a class="next" onclick="plusDivs(1, 0)">&#10095;</a>
-            <!-- Extra plusDivs parameter refers to first (0) slideshow (start from 0) -->
+            <br>
+            <div style="text-align:center">
+                <span class="dot" onclick="currentDiv(1, 0)"></span>
+                <span class="dot" onclick="currentDiv(2, 0)"></span>
+                <span class="dot" onclick="currentDiv(3, 0)"></span>
+                <span class="dot" onclick="currentDiv(4, 0)"></span>
+            </div>    
         </div>
-        <br>
-        <div style="text-align:center">
-            <span class="dot" onclick="currentDiv(1, 0)"></span>
-            <span class="dot" onclick="currentDiv(2, 0)"></span>
-            <span class="dot" onclick="currentDiv(3, 0)"></span>
-            <span class="dot" onclick="currentDiv(4, 0)"></span>
-        </div>
-
+        
         <h2>SunBeam</h2>
         <p>$20.00</p>
         <button type="button" onclick="addToCart('SunBeam')">Add to Cart</button>
     </section>
 
     <section id="product2-section" class="product-card">
+        <div class="slideshow">	
+
         <div class="slideshow-container">
             <div class="mySlides">
                 <img src="Images/MoonLight4.jpg" alt="Bead Bracelet 2 - Image 1">
@@ -84,7 +88,7 @@
            <span class="dot" onclick="currentDiv(3, 1)"></span>
            <span class="dot" onclick="currentDiv(4, 1)"></span>
        </div>
-
+        </div>
 
         <h2>MoonLight</h2>
         <p>$25.00</p>
@@ -92,6 +96,8 @@
     </section>
 
     <section id="product3-section" class="product-card">
+        <div class="slideshow">	
+
         <div class="slideshow-container">
             <div class="mySlides">
                 <img src="Images/GalaxyDust1.jpg" alt="Bead Bracelet 3 - Image 1">
@@ -119,6 +125,7 @@
            <span class="dot" onclick="currentDiv(3, 2)"></span>
            <span class="dot" onclick="currentDiv(4, 2)"></span>
        </div>
+        </div>
        
         <h2>GalaxyDust</h2>
         <p>$25.00</p>
