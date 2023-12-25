@@ -29,11 +29,16 @@ section {
     border: 1px solid #ccc;
     margin: 10px;
     padding: 10px;
-    width: 200px;
+    width: calc(33.33% - 20px); /* Set width to one-third minus margins */
+    box-sizing: border-box; /* Include padding and border in the width */
+    display: inline-block; /* Display cards in a line */
+    vertical-align: top; /* Align cards to the top */
 }
+
 .product-card img {
     width: 100%;
 }
+
 .product-card button {
     background-color: #4CAF50;
     border: none;
@@ -41,11 +46,12 @@ section {
     padding: 10px 24px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: block; /* Ensure the button takes up the full width */
+    margin: 10px auto; /* Center the button */
     font-size: 16px;
-    margin: 4px 2px;
     cursor: pointer;
 }
+
 
 /* Slideshow styles */
 .slideshow-container {
