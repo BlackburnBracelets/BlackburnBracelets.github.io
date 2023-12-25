@@ -167,8 +167,16 @@
             <!-- Add more slides as needed -->
 
             <!-- Navigation buttons -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            <a class="prev" onclick="plusDivs(-1, 0)">&#10094;</a>
+            <a class="next" onclick="plusDivs(1, 0)">&#10095;</a>
+            <!-- Extra plusDivs parameter refers to first (0) slideshow (start from 0) -->
+        </div>
+        <br>
+        <div style="text-align:center">
+            <span class="dot" onclick="currentDiv(1, 0)"></span>
+            <span class="dot" onclick="currentDiv(2, 0)"></span>
+            <span class="dot" onclick="currentDiv(3, 0)"></span>
+            <span class="dot" onclick="currentDiv(4, 0)"></span>
         </div>
 
         <h2>SunBeam</h2>
@@ -192,10 +200,19 @@
             </div>
             <!-- Add more slides as needed -->
 
-            <!-- Navigation buttons -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
+           <!-- Navigation buttons -->
+           <a class="prev" onclick="plusDivs(-1, 1)">&#10094;</a>
+           <a class="next" onclick="plusDivs(1, 1)">&#10095;</a>
+           <!-- Extra plusDivs parameter refers to first (0) slideshow (start from 0) -->
+       </div>
+       <br>
+       <div style="text-align:center">
+           <span class="dot" onclick="currentDiv(1, 1)"></span>
+           <span class="dot" onclick="currentDiv(2, 1)"></span>
+           <span class="dot" onclick="currentDiv(3, 1)"></span>
+           <span class="dot" onclick="currentDiv(4, 1)"></span>
+       </div>
+
 
         <h2>MoonLight</h2>
         <p>$25.00</p>
@@ -219,10 +236,18 @@
             <!-- Add more slides as needed -->
 
             <!-- Navigation buttons -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
-
+           <a class="prev" onclick="plusDivs(-1, 2)">&#10094;</a>
+           <a class="next" onclick="plusDivs(1, 2)">&#10095;</a>
+           <!-- Extra plusDivs parameter refers to first (0) slideshow (start from 0) -->
+       </div>
+       <br>
+       <div style="text-align:center">
+           <span class="dot" onclick="currentDiv(1, 2)"></span>
+           <span class="dot" onclick="currentDiv(2, 2)"></span>
+           <span class="dot" onclick="currentDiv(3, 2)"></span>
+           <span class="dot" onclick="currentDiv(4, 2)"></span>
+       </div>
+       
         <h2>GalaxyDust</h2>
         <p>$25.00</p>
         <button type="button" onclick="addToCart('GalaxyDust')">Add to Cart</button>
