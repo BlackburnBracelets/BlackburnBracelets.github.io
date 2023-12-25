@@ -107,8 +107,6 @@ function addToCartModal(productName) {
         cartItems.appendChild(listItem);
     }
 
-      // For now, let's just show a notification
-    showNotification(productName + " added to cart!");
 }
 
 // Function to find a cart item by product name
