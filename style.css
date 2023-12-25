@@ -21,10 +21,10 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 80px 40px; /* Increased top padding to account for the fixed header */
+    padding: 80px 40px; /* Adjusted top padding to create space below the fixed header */
     text-align: center;
-    margin-top: 80px; /* Added margin to create space between header and content */
 }
+
 .product-card {
     border: 1px solid #ccc;
     margin: 10px;
