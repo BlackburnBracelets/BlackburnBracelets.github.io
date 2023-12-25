@@ -120,6 +120,9 @@
             font-size: 16px;
             margin: 10px;
             cursor: pointer;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
         }
 
         /* About section styles */
@@ -127,6 +130,12 @@
             background-color: #f4f4f4;
             padding: 40px;
             text-align: center;
+        }
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -189,6 +198,7 @@
 
     <!-- About section -->
     <section id="about-section" class="about-section">
+        <img src="profile-picture-placeholder.jpg" alt="Profile Picture" class="profile-picture">
         <h2>About Blackburn Bracelets</h2>
         <p>Discover the beauty of handmade bead bracelets at Blackburn Bracelets. Our unique designs are crafted with passion and creativity, bringing you the perfect accessories to complement your style.</p>
     </section>
@@ -204,6 +214,9 @@
             <ul id="cartItems"></ul>
         </div>
     </div>
+
+    <!-- View Cart button -->
+    <div class="view-cart-button" onclick="openCartModal()">View Cart</div>
 
     <script>
         var slideIndex = 1;
