@@ -231,21 +231,6 @@ header {
 }
 
 
-@import url("https://fonts.googleapis.com/css?family=Raleway:300");
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    display: flex;
-    height: 100vh;
-    background: black;
-    align-items: center;
-    justify-content: center;
-}
-
 button {
     position: relative;
     height: 60px;
@@ -253,11 +238,20 @@ button {
     border: none;
     outline: none;
     color: white;
-    background: #111;
     cursor: pointer;
     border-radius: 5px;
     font-size: 18px;
-    font-family: 'Raleway', sans-serif;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+        background-position: 0 0;
+    }
+    100% {
+        transform: rotate(360deg);
+        background-position: 100% 0;
+    }
 }
 
 .button-glow:before {
@@ -279,18 +273,4 @@ button {
 
 .button-glow:hover:before {
     opacity: 1;
-}
-
-.button-glow:hover:active {
-    background: none;
-}
-
-.button-glow:hover:active:before {
-    filter: blur(2px);
-}
-
-@keyframes animate {
-    0% { background-position: 0 0; }
-    50% { background-position: 400% 0; }
-    100% { background-position: 0 0; }
 }
