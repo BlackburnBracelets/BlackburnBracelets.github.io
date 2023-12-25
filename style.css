@@ -25,21 +25,14 @@ section {
     text-align: center;
 }
 
-/* Add the following styles to center the product grid */
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-}
+
 
 .product-cards-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
     max-width: 900px; /* Set a max-width for better readability */
+    margin: 0 auto; /* Center the container */
 }
 
 .product-card {
