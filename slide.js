@@ -108,9 +108,7 @@ function addToCartModal(productName) {
     }
 
       // For now, let's just show a notification
-      showNotification(productName + " added to cart!");
-      // You can add the product to the cart modal as well
-      addToCartModal(productName);
+    showNotification(productName + " added to cart!");
 }
 
 // Function to find a cart item by product name
