@@ -1,15 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blackburn Bracelets</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
         }
         .product-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
+            padding: 20px;
         }
         .product-card {
             border: 1px solid #ccc;
@@ -87,10 +97,26 @@
             right: 10px;
             cursor: pointer;
         }
+        .view-cart-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <h1>Welcome to Blackburn Bracelets!</h1>
+    <header>
+        <h1>Welcome to Blackburn Bracelets!</h1>
+        <button class="view-cart-button" onclick="openCartModal()">View Cart</button>
+    </header>
+
     <div class="product-grid">
         <!-- Product 1 with slideshow -->
         <div class="product-card">
@@ -207,8 +233,5 @@
             cartModal.style.display = "none";
         }
     </script>
-    
-    <!-- Shopping cart button -->
-    <button type="button" onclick="openCartModal()">View Cart</button>
 </body>
 </html>
