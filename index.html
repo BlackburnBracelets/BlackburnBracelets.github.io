@@ -12,6 +12,7 @@
             box-sizing: border-box;
             scroll-behavior: smooth;
         }
+
         header {
             text-align: center;
             padding: 20px;
@@ -21,13 +22,15 @@
             color: white;
             z-index: 1000;
         }
+
         section {
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px;
+            padding: 80px 40px; /* Increased top padding to account for the fixed header */
             text-align: center;
+            margin-top: 80px; /* Added margin to create space between header and content */
         }
         .product-card {
             border: 1px solid #ccc;
