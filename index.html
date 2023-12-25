@@ -251,63 +251,7 @@
     <!-- View Cart button -->
     <div class="view-cart-button" onclick="openCartModal()">View Cart</div>
 
-    <script>
-        var slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            if (n > slides.length) {
-                slideIndex = 1;
-            }
-            if (n < 1) {
-                slideIndex = slides.length;
-            }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[slideIndex - 1].style.display = "block";
-        }
-
-        function addToCart(productName) {
-            // Add your logic for adding to cart here
-            // For now, let's just show a notification
-            showNotification(productName + " added to cart!");
-            // You can add the product to the cart modal as well
-            addToCartModal(productName);
-        }
-
-        function showNotification(message) {
-            var notification = document.getElementById("notification");
-            notification.innerHTML = message;
-            notification.style.display = "block";
-            setTimeout(function () {
-                notification.style.display = "none";
-            }, 3000); // Hide the notification after 3 seconds
-        }
-
-        // Shopping Cart Modal functions
-        function addToCartModal(productName) {
-            var cartItems = document.getElementById("cartItems");
-            var listItem = document.createElement("li");
-            listItem.appendChild(document.createTextNode(productName));
-            cartItems.appendChild(listItem);
-        }
-
-        function openCartModal() {
-            var cartModal = document.getElementById("cartModal");
-            cartModal.style.display = "block";
-        }
-
-        function closeCartModal() {
-            var cartModal = document.getElementById("cartModal");
-            cartModal.style.display = "none";
-        }
-    </script>
+    <!-- Link to the JavaScript file -->
+	<script src="scroll.js"></script>
 </body>
 </html>
