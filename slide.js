@@ -78,13 +78,14 @@ function addToCart(productName) {
 }
 
 function showNotification(message) {
-    var notification = document.getElementById("notification");
-    notification.innerHTML = message;
-    notification.style.display = "block";
-    setTimeout(function () {
-        notification.style.display = "none";
-    }, 3000); // Hide the notification after 3 seconds
+  var notification = document.getElementById("notification");
+  notification.innerHTML = message;
+  notification.classList.add("show"); // Add the show class
+  setTimeout(function () {
+      notification.classList.remove("show"); // Remove the show class after a delay
+  }, 3000); // Hide the notification after 3 seconds
 }
+
 
 // Shopping Cart Modal functions
 function addToCartModal(productName) {

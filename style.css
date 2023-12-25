@@ -236,10 +236,15 @@ background-color: #717171;
     color: white;
     text-align: center;
     padding: 15px;
-    z-index: 1000; /* Ensure it's above other elements */
-    display: none; /* Hide by default */
+    z-index: 1000;
+    opacity: 0; /* Set initial opacity to 0 */
+    transition: opacity 0.5s ease; /* Add transition for opacity */
   }
-  
+
+#notification.show {
+    opacity: 1; /* When the show class is added, set opacity to 1 */
+}
+
   header {
     position: relative;
     z-index: 1; /* Ensure the header stays above other elements */
