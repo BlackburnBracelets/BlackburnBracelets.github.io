@@ -77,13 +77,14 @@ function addToCart(productName) {
     addToCartModal(productName);
 }
 
+// Function to show the notification with fading effect
 function showNotification(message) {
-    var notification = document.getElementById("notification");
-    notification.innerHTML = message;
-    notification.style.display = "block";
-    setTimeout(function () {
-        notification.style.display = "none";
-    }, 3000); // Hide the notification after 3 seconds
+  var notification = document.getElementById("notification");
+  notification.innerHTML = message;
+  notification.classList.add("show"); // Add the "show" class
+  setTimeout(function () {
+      notification.classList.remove("show"); // Remove the "show" class after 3 seconds
+  }, 3000); // Hide the notification after 3 seconds
 }
 
 // Shopping Cart Modal functions
@@ -105,6 +106,11 @@ function addToCartModal(productName) {
         listItem.appendChild(document.createTextNode(productName + " x1"));
         cartItems.appendChild(listItem);
     }
+
+      // For now, let's just show a notification
+      showNotification(productName + " added to cart!");
+      // You can add the product to the cart modal as well
+      addToCartModal(productName);
 }
 
 // Function to find a cart item by product name
@@ -131,12 +137,14 @@ function updateCartItem(cartItem) {
     cartItem.element.dataset.quantity = cartItem.quantity;
 }
 
+// Function to handle showing the cart modal
 function openCartModal() {
-    var cartModal = document.getElementById("cartModal");
-    cartModal.style.display = "block";
+  var cartModal = document.getElementById("cartModal");
+  cartModal.style.display = "block";
 }
 
+// Function to handle closing the cart modal
 function closeCartModal() {
-    var cartModal = document.getElementById("cartModal");
-    cartModal.style.display = "none";
+  var cartModal = document.getElementById("cartModal");
+  cartModal.style.display = "none";
 }

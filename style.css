@@ -86,17 +86,6 @@ body {
     width: 100%;
 }
 
-/* Notification styles */
-.notification {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px;
-    z-index: 1;
-}
 
 /* Shopping cart styles */
 .cart-modal {
@@ -250,7 +239,7 @@ background-color: #717171;
     cursor: pointer;
 }
 
-
+/* Notification styles */
 #notification {
     position: fixed;
     top: 0;
@@ -262,13 +251,14 @@ background-color: #717171;
     text-align: center;
     padding: 15px;
     z-index: 1000;
-    opacity: 0; /* Set initial opacity to 0 */
-    transition: opacity 0.5s ease; /* Add transition for opacity */
-  }
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
 
 #notification.show {
-    opacity: 1; /* When the show class is added, set opacity to 1 */
+    opacity: 1;
 }
+
 
   header {
     position: relative;
