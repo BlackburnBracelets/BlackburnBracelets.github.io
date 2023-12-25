@@ -90,43 +90,16 @@ function showNotification(message) {
 function addToCartModal(productName) {
     var cartItems = document.getElementById("cartItems");
     var listItem = document.createElement("li");
-
-    // Create a div for each cart item
-    var cartItemDiv = document.createElement("div");
-    cartItemDiv.className = "cart-item";
-
-    // Display the product name
-    cartItemDiv.appendChild(document.createTextNode(productName));
-
-    // Create a dropdown for quantity
-    var quantityDropdown = document.createElement("select");
-    quantityDropdown.id = "quantityDropdown";
-    for (var i = 1; i <= 10; i++) {
-        var option = document.createElement("option");
-        option.value = i;
-        option.text = i;
-        quantityDropdown.appendChild(option);
-    }
-
-    // Append the dropdown to the cart item div
-    cartItemDiv.appendChild(quantityDropdown);
-
-    // Append the cart item div to the list
-    listItem.appendChild(cartItemDiv);
-
-    // Append the list item to the cart items list
+    listItem.appendChild(document.createTextNode(productName));
     cartItems.appendChild(listItem);
 }
 
-function checkout() {
-    // Retrieve selected quantity from the dropdown
-    var quantityDropdown = document.getElementById("quantityDropdown");
-    var selectedQuantity = quantityDropdown.value;
+function openCartModal() {
+    var cartModal = document.getElementById("cartModal");
+    cartModal.style.display = "block";
+}
 
-    // Perform checkout logic with the selected quantity
-    // For now, let's just show a notification
-    showNotification("Checkout with quantity: " + selectedQuantity);
-    
-    // Close the cart modal
-    closeCartModal();
+function closeCartModal() {
+    var cartModal = document.getElementById("cartModal");
+    cartModal.style.display = "none";
 }
