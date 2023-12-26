@@ -127,9 +127,24 @@ section {
     background-color: #f4f4f4;
     padding: 40px;
     text-align: left; /* Align text to the left */
-    display: flex; /* Use flexbox for layout */
+    display: flex;
+    justify-content: space-between;
     align-items: center; /* Center vertically */
 }
+
+.about-content {
+    display: flex;
+}
+
+.about-left,
+.about-right {
+    width: 48%; /* Adjust the width as needed */
+}
+
+.about-left {
+    margin-right: 2%; /* Adjust the margin as needed */
+}
+
 
 .profile-picture {
     width: 150px;
