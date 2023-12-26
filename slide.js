@@ -91,9 +91,8 @@ function showNotification(message) {
   }, 3000); // Hide the notification after 3 seconds
 }
 
-// Shopping Cart Modal functions
 function addToCartModal(productName) {
-    var cartItems = document.getElementById("cartItems").children;
+    var cartItemsList = document.getElementById("cartItems").children;
 
     // Check if the item is already in the cart
     var existingCartItem = findCartItem(productName);
@@ -115,7 +114,7 @@ function addToCartModal(productName) {
 
         // Create a dropdown for quantity
         var quantityDropdown = document.createElement("select");
-        quantityDropdown.id = "quantityDropdown";
+        quantityDropdown.id = "quantityDropdown_" + productName; // Unique ID for each dropdown
         for (var i = 1; i <= 10; i++) {
             var option = document.createElement("option");
             option.value = i;
@@ -139,6 +138,7 @@ function addToCartModal(productName) {
         updateTotalPrice();
     }
 }
+
 
 function updateQuantity(productName, newQuantity) {
   // Find the cart item by product name
