@@ -11,7 +11,7 @@ header {
     padding: 20px;
     position: fixed;
     width: 100%;
-    background-color: #333;
+    background-color: #13373e;
     color: white;
     z-index: 1000;
 }
@@ -126,7 +126,6 @@ section {
 .about-section {
     background-color: #f4f4f4;
     padding: 40px;
-    text-align: left; /* Align text to the left */
     display: flex;
     justify-content: space-between;
     align-items: center; /* Center vertically */
