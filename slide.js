@@ -112,18 +112,23 @@ function addToCartModal(productName) {
         // Display the product name
         cartItemDiv.appendChild(document.createTextNode(productName));
 
-        // Create a dropdown for quantity
-        var quantityDropdown = document.createElement("select");
-        quantityDropdown.id = "quantityDropdown_" + productName; // Unique ID for each dropdown
-        for (var i = 1; i <= 10; i++) {
-            var option = document.createElement("option");
-            option.value = i;
-            option.text = i;
-            quantityDropdown.appendChild(option);
-        }
+        // Create a dropdown for quantity (or update existing one)
+        var quantityDropdownId = "quantityDropdown_" + productName;
+        var quantityDropdown = document.getElementById(quantityDropdownId);
 
-        // Append the dropdown to the cart item div
-        cartItemDiv.appendChild(quantityDropdown);
+        if (!quantityDropdown) {
+            quantityDropdown = document.createElement("select");
+            quantityDropdown.id = quantityDropdownId; // Unique ID for each dropdown
+            for (var i = 1; i <= 10; i++) {
+                var option = document.createElement("option");
+                option.value = i;
+                option.text = i;
+                quantityDropdown.appendChild(option);
+            }
+
+            // Append the dropdown to the cart item div
+            cartItemDiv.appendChild(quantityDropdown);
+        }
 
         // Append the cart item div to the list
         listItem.appendChild(cartItemDiv);
@@ -138,6 +143,7 @@ function addToCartModal(productName) {
         updateTotalPrice();
     }
 }
+
 
 
 function updateQuantity(productName, newQuantity) {
