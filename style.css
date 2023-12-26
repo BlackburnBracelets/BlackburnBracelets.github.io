@@ -132,17 +132,23 @@ section {
     align-items: center; /* Center vertically */
 }
 
+.about-section {
+    overflow: hidden; /* Clear floats */
+}
+
+.profile-picture-container {
+    float: left;
+    width: 20%; /* Adjust the width as needed */
+}
+
 .about-content {
-    display: flex;
+    float: left;
+    width: 40%; /* Adjust the width as needed */
 }
 
-.about-left,
-.about-right {
-    width: 48%; /* Adjust the width as needed */
-}
-
-.about-left {
-    margin-right: 2%; /* Adjust the margin as needed */
+.additional-info {
+    float: left;
+    width: 40%; /* Adjust the width as needed */
 }
 
 
@@ -151,10 +157,6 @@ section {
     height: 150px;
     border-radius: 50%;
     margin-right: 20px; /* Add margin to the right to separate from text */
-}
-
-.about-text {
-    max-width: 25%; /* Adjust the maximum width of the text */
 }
 
 * {
