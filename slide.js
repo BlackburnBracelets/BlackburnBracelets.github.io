@@ -161,9 +161,11 @@ function updateTotalPrice() {
       totalPrice += cartItem.quantity * productPrice;
   }
 
-  // Display the total price in the cart modal
-  document.getElementById("cartTotalPrice").innerText = "$" + totalPrice.toFixed(2);
+    // Display the total price in the cart modal
+    document.getElementById("cartTotalPrice").textContent = "Total Price: $" + totalPrice.toFixed(2);
 }
+
+
 
 function getProductPrice() {
   // You can implement logic to get the price of each product based on its name
