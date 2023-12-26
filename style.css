@@ -139,8 +139,7 @@ section {
 }
 
 .about-text {
-    text-align: right; /* Align text to the right */
-    max-width: 60%; /* Adjust the maximum width of the text */
+    max-width: 25%; /* Adjust the maximum width of the text */
 }
 
 * {
