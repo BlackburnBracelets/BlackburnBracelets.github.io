@@ -92,15 +92,12 @@ function showNotification(message) {
 }
 
 function addToCartModal(productName) {
-    var cartItemsList = document.getElementById("cartItems").children;
-
     // Check if the item is already in the cart
     var existingCartItem = findCartItem(productName);
 
     if (existingCartItem) {
-        // If the item is in the cart, update the quantity
-        existingCartItem.quantity += 1;
-        updateCartItem(existingCartItem);
+        // If the item is in the cart, update the quantity in the existing dropdown
+        updateQuantity(productName, existingCartItem.quantity + 1);
     } else {
         // If the item is not in the cart, create a new item
         var listItem = document.createElement("li");
@@ -144,19 +141,19 @@ function addToCartModal(productName) {
     }
 }
 
+// Function to update the cart item and the associated dropdown
+function updateCartItem(cartItem) {
+    cartItem.element.innerHTML = cartItem.productName + " x" + cartItem.quantity;
 
+    // Update the associated dropdown value
+    var quantityDropdownId = "quantityDropdown_" + cartItem.productName;
+    var quantityDropdown = document.getElementById(quantityDropdownId);
+    if (quantityDropdown) {
+        quantityDropdown.value = cartItem.quantity;
+    }
 
-function updateQuantity(productName, newQuantity) {
-  // Find the cart item by product name
-  var cartItem = findCartItem(productName);
-
-  // Update the quantity if the cart item exists
-  if (cartItem) {
-      cartItem.quantity = newQuantity;
-
-      // Update the total price and display it
-      updateTotalPrice();
-  }
+    // Update the total price and display it
+    updateTotalPrice();
 }
 
 function updateTotalPrice() {
