@@ -114,7 +114,7 @@ function addToCartModal(productName) {
         // Create a dropdown for quantity
         var quantityDropdown = document.createElement("select");
         quantityDropdown.id = "quantityDropdown";
-        for (var i = 0; i <= 10; i++) {
+        for (var i = 1; i <= 10; i++) {
             var option = document.createElement("option");
             option.value = i;
             option.text = i;
