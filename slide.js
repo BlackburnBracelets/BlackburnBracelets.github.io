@@ -127,8 +127,49 @@ function addToCartModal(productName) {
 
         // Append the list item to the cart items list
         document.getElementById("cartItems").appendChild(listItem);
+
+        // Add the product to the cart items array with initial quantity as 1
+        cartItems.push({ productName: productName, quantity: 1 });
+
+        // Update the total price and display it
+        updateTotalPrice();
     }
 }
+
+function updateQuantity(productName, newQuantity) {
+  // Find the cart item by product name
+  var cartItem = findCartItem(productName);
+
+  // Update the quantity if the cart item exists
+  if (cartItem) {
+      cartItem.quantity = newQuantity;
+
+      // Update the total price and display it
+      updateTotalPrice();
+  }
+}
+
+function updateTotalPrice() {
+  var totalPrice = 0;
+
+  // Calculate the total price based on cart items
+  for (var i = 0; i < cartItems.length; i++) {
+      var cartItem = cartItems[i];
+      var productPrice = getProductPrice(cartItem.productName);
+      totalPrice += cartItem.quantity * productPrice;
+  }
+
+  // Display the total price in the cart modal
+  document.getElementById("cartTotalPrice").innerText = "$" + totalPrice.toFixed(2);
+}
+
+function getProductPrice(productName) {
+  // You can implement logic to get the price of each product based on its name
+  // For simplicity, assuming all products have the same price in this example
+  return 25.00; // Replace with actual logic for getting product price
+}
+
+
 // Function to find a cart item by product name
 function findCartItem(productName) {
     var cartItems = document.getElementById("cartItems").children;
@@ -157,6 +198,9 @@ function updateCartItem(cartItem) {
 function openCartModal() {
   var cartModal = document.getElementById("cartModal");
   cartModal.style.display = "block";
+
+   // Update the total price when opening the cart modal
+   updateTotalPrice();
 }
 
 // Function to handle closing the cart modal

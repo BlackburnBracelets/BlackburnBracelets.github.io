@@ -14,8 +14,7 @@ header {
     background-color: #13373e;
     color: white;
     z-index: 1000;
-    height: 100px; /* Change the value to your desired height */
-
+    height: 150px; /* Change the value to your desired height */
 }
 
 /* Add this style to adjust the height of the header logo */
