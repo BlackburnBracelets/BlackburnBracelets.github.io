@@ -89,36 +89,46 @@ function showNotification(message) {
 
 // Shopping Cart Modal functions
 function addToCartModal(productName) {
-  var cartItems = document.getElementById("cartItems");
-  var listItem = document.createElement("li");
+    var cartItems = document.getElementById("cartItems").children;
 
-  // Create a div for each cart item
-  var cartItemDiv = document.createElement("div");
-  cartItemDiv.className = "cart-item";
+    // Check if the item is already in the cart
+    var existingCartItem = findCartItem(productName);
 
-  // Display the product name
-  cartItemDiv.appendChild(document.createTextNode(productName));
+    if (existingCartItem) {
+        // If the item is in the cart, update the quantity
+        existingCartItem.quantity += 1;
+        updateCartItem(existingCartItem);
+    } else {
+        // If the item is not in the cart, create a new item
+        var listItem = document.createElement("li");
 
-  // Create a dropdown for quantity
-  var quantityDropdown = document.createElement("select");
-  quantityDropdown.id = "quantityDropdown";
-  for (var i = 1; i <= 10; i++) {
-      var option = document.createElement("option");
-      option.value = i;
-      option.text = i;
-      quantityDropdown.appendChild(option);
-  }
+        // Create a div for each cart item
+        var cartItemDiv = document.createElement("div");
+        cartItemDiv.className = "cart-item";
 
-  // Append the dropdown to the cart item div
-  cartItemDiv.appendChild(quantityDropdown);
+        // Display the product name
+        cartItemDiv.appendChild(document.createTextNode(productName));
 
-  // Append the cart item div to the list
-  listItem.appendChild(cartItemDiv);
+        // Create a dropdown for quantity
+        var quantityDropdown = document.createElement("select");
+        quantityDropdown.id = "quantityDropdown";
+        for (var i = 1; i <= 10; i++) {
+            var option = document.createElement("option");
+            option.value = i;
+            option.text = i;
+            quantityDropdown.appendChild(option);
+        }
 
-  // Append the list item to the cart items list
-  cartItems.appendChild(listItem);
+        // Append the dropdown to the cart item div
+        cartItemDiv.appendChild(quantityDropdown);
+
+        // Append the cart item div to the list
+        listItem.appendChild(cartItemDiv);
+
+        // Append the list item to the cart items list
+        document.getElementById("cartItems").appendChild(listItem);
+    }
 }
-
 // Function to find a cart item by product name
 function findCartItem(productName) {
     var cartItems = document.getElementById("cartItems").children;
