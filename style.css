@@ -126,14 +126,21 @@ section {
 .about-section {
     background-color: #f4f4f4;
     padding: 40px;
-    text-align: center;
+    text-align: left; /* Align text to the left */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center vertically */
 }
 
 .profile-picture {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    margin-bottom: 20px;
+    margin-right: 20px; /* Add margin to the right to separate from text */
+}
+
+.about-text {
+    text-align: right; /* Align text to the right */
+    max-width: 60%; /* Adjust the maximum width of the text */
 }
 
 * {
