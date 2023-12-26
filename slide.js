@@ -17,6 +17,8 @@ function initializeSlideshows() {
         // Show the initial slide
         showDivs(initialSlideIndex, i);
     }
+      // Initialize cart items array
+      cartItems = [];
 }
 
 // Function to navigate to the next or previous slide
