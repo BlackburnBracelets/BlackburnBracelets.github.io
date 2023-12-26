@@ -1,6 +1,9 @@
 // Initialize slide indexes array
 var slideIndexes = [];
 
+// Initialize cart items array
+var cartItems = [];
+
 // Function to initialize each slideshow
 function initializeSlideshows() {
     var slideshows = document.getElementsByClassName("slideshow");
@@ -17,8 +20,7 @@ function initializeSlideshows() {
         // Show the initial slide
         showDivs(initialSlideIndex, i);
     }
-      // Initialize cart items array
-      cartItems = [];
+      
 }
 
 // Function to navigate to the next or previous slide
