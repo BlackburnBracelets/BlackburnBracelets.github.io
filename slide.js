@@ -114,7 +114,7 @@ function addToCartModal(productName) {
         // Create a dropdown for quantity
         var quantityDropdown = document.createElement("select");
         quantityDropdown.id = "quantityDropdown";
-        for (var i = 1; i <= 10; i++) {
+        for (var i = 0; i <= 10; i++) {
             var option = document.createElement("option");
             option.value = i;
             option.text = i;
@@ -157,7 +157,7 @@ function updateTotalPrice() {
   // Calculate the total price based on cart items
   for (var i = 0; i < cartItems.length; i++) {
       var cartItem = cartItems[i];
-      var productPrice = getProductPrice(cartItem.productName);
+      var productPrice = getProductPrice();
       totalPrice += cartItem.quantity * productPrice;
   }
 
@@ -165,7 +165,7 @@ function updateTotalPrice() {
   document.getElementById("cartTotalPrice").innerText = "$" + totalPrice.toFixed(2);
 }
 
-function getProductPrice(productName) {
+function getProductPrice() {
   // You can implement logic to get the price of each product based on its name
   // For simplicity, assuming all products have the same price in this example
   return 25.00; // Replace with actual logic for getting product price
