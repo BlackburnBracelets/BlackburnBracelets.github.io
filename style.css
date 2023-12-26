@@ -14,6 +14,13 @@ header {
     background-color: #13373e;
     color: white;
     z-index: 1000;
+    height: 100px; /* Change the value to your desired height */
+
+}
+
+/* Add this style to adjust the height of the header logo */
+.header-logo {
+    max-height: 100%; /* Ensure the logo doesn't exceed the header height */
 }
 
 section {
