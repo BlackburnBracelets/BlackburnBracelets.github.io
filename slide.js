@@ -155,3 +155,32 @@ function findCartItem(productName) {
 
     return null;
 }
+
+
+// Function to handle showing the cart modal
+function openCartModal() {
+  var cartModal = document.getElementById("cartModal");
+  cartModal.style.display = "block";
+
+   // Update the total price when opening the cart modal
+   updateTotalPrice();
+}
+
+// Function to handle closing the cart modal
+function closeCartModal() {
+  var cartModal = document.getElementById("cartModal");
+  cartModal.style.display = "none";
+}
+
+function checkout() {
+  // Retrieve selected quantity from the dropdown
+  var quantityDropdown = document.getElementById("quantityDropdown");
+  var selectedQuantity = quantityDropdown.value;
+
+  // Perform checkout logic with the selected quantity
+  // For now, let's just show a notification
+  showNotification("Checkout with quantity: " + selectedQuantity);
+  
+  // Close the cart modal
+  closeCartModal();
+}
