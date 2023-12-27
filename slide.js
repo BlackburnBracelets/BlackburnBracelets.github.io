@@ -10,12 +10,12 @@ function initializeSlideshow() {
 }
 
 // Function to navigate to the next or previous slide
-function plusSlide(n) {
+function plusDivs(n) {
     showSlide(slideIndex += n);
 }
 
 // Function to navigate to a specific slide
-function currentSlide(n) {
+function currentDiv(n) {
     showSlide(slideIndex = n);
 }
 
