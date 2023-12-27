@@ -104,7 +104,10 @@ function addToCartModal(productName) {
         listItem.dataset.productName = productName;
         listItem.dataset.quantity = 1;
         listItem.appendChild(document.createTextNode(productName + " x1"));
-        cartItems.appendChild(listItem);
+
+        // Append the new item to the container that holds all cart items
+        document.getElementById("cartItems").appendChild(listItem);
+
     }
     // Update the total price and display it
     updateTotalPrice();
