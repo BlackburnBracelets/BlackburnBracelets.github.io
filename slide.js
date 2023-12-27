@@ -97,7 +97,7 @@ function addToCartModal(productName) {
 
     if (existingItem) {
         // Update the quantity if the product is already in the cart
-        existingItem.quantity++;
+        existingItem.quantity = parseInt(existingItem.element.dataset.quantity) + 1;
         // Update the dataset and text content separately
         existingItem.element.dataset.quantity = existingItem.quantity;
         existingItem.element.textContent = productName + " x" + existingItem.quantity;
