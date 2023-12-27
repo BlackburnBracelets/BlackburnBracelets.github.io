@@ -126,16 +126,19 @@ function updateCartItem(cartItem) {
 
 function updateTotalPrice() {
     var totalPrice = 0;
+    var totalQuantity = 0;
 
-    // Calculate the total price based on cart items
+    // Calculate the total price and quantity based on cart items
     for (var i = 0; i < cartItems.length; i++) {
         var cartItem = cartItems[i];
         var productPrice = getProductPrice();
         totalPrice += cartItem.quantity * parseFloat(productPrice);
+        totalQuantity += cartItem.quantity;
     }
 
-    // Display the total price in the cart modal
+    // Display the total price and quantity in the cart modal
     document.getElementById("cartTotalPrice").textContent = "Total Price: $" + totalPrice.toFixed(2);
+    document.getElementById("cartTotalQuantity").textContent = "Total Quantity: " + totalQuantity;
 }
 
 function getProductPrice() {
@@ -179,14 +182,14 @@ function closeCartModal() {
 }
 
 function checkout() {
-  // Retrieve selected quantity from the dropdown
-  var quantityDropdown = document.getElementById("quantityDropdown");
-  var selectedQuantity = quantityDropdown.value;
+    // Retrieve total quantity from the displayed element
+    var totalQuantityElement = document.getElementById("cartTotalQuantity");
+    var totalQuantity = parseInt(totalQuantityElement.textContent.replace("Total Quantity: ", ""));
 
-  // Perform checkout logic with the selected quantity
-  // For now, let's just show a notification
-  showNotification("Checkout with quantity: " + selectedQuantity);
-  
-  // Close the cart modal
-  closeCartModal();
-}   
+    // Perform checkout logic with the total quantity
+    // For now, let's just show a notification
+    showNotification("Checkout with quantity: " + totalQuantity);
+
+    // Close the cart modal
+    closeCartModal();
+}
