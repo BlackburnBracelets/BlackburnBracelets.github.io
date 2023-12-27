@@ -1,61 +1,36 @@
-// Initialize slide indexes array
-var slideIndexes = [];
+// Initialize slide index
+var slideIndex = 1;
 
 // Initialize cart items array
 var cartItems = [];
 
-// Function to initialize each slideshow
-function initializeSlideshows() {
-    var slideshows = document.getElementsByClassName("slideshow");
-
-    for (var i = 0; i < slideshows.length; i++) {
-        var initialSlideIndex = 1;
-
-        // Set custom data attribute to first current image index
-        slideshows[i].setAttribute("data-currentslide", initialSlideIndex);
-
-        // Initialize the current slide index
-        slideIndexes[i] = initialSlideIndex;
-
-        // Show the initial slide
-        showDivs(initialSlideIndex, i);
-    }
-      
+// Function to initialize the slideshow
+function initializeSlideshow() {
+    showSlide(slideIndex);
 }
 
 // Function to navigate to the next or previous slide
-function plusDivs(n, j) {
-    // Get custom data attribute value of current image index for slideshow class index j
-    slideIndexes[j] += n;
-
-    // Show the updated slide
-    showDivs(slideIndexes[j], j);
+function plusSlide(n) {
+    showSlide(slideIndex += n);
 }
 
 // Function to navigate to a specific slide
-function currentDiv(n, j) {
-    // Show the specified slide
-    showDivs(slideIndexes[j] = n, j);
+function currentSlide(n) {
+    showSlide(slideIndex = n);
 }
 
 // Function to display the current slide
-function showDivs(n, j) {
-    var slideshow = document.getElementsByClassName("slideshow")[j];
-    var slides = slideshow.getElementsByClassName("mySlides");
-    var dots = slideshow.getElementsByClassName("dot");
+function showSlide(n) {
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
 
-    // Handle slide index overflow
     if (n > slides.length) {
-        slideIndexes[j] = 1;
+        slideIndex = 1;
     }
     if (n < 1) {
-        slideIndexes[j] = slides.length;
+        slideIndex = slides.length;
     }
 
-    // Set custom data attribute to the current image index
-    slideshow.setAttribute("data-currentslide", slideIndexes[j]);
-
-    // Hide all slides and remove active class from dots
     for (var i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
@@ -63,136 +38,87 @@ function showDivs(n, j) {
         dots[i].className = dots[i].className.replace(" active", "");
     }
 
-    // Display the current slide and mark the corresponding dot as active
-    slides[slideIndexes[j] - 1].style.display = "block";
-    dots[slideIndexes[j] - 1].className += " active";
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
 }
 
-// Call the function to initialize slideshows when the DOM is ready
-document.addEventListener("DOMContentLoaded", function () {
-    initializeSlideshows();
-});
-
+// Function to add a product to the cart
 function addToCart(productName) {
-    // Add your logic for adding to cart here
-    // For now, let's just show a notification
     showNotification(productName + " added to cart!");
-    // You can add the product to the cart modal as well
     addToCartModal(productName);
 }
 
-// Function to show the notification with fading effect
+// Function to show a notification
 function showNotification(message) {
-  var notification = document.getElementById("notification");
-  notification.innerHTML = message;
-  notification.classList.add("show"); // Add the "show" class
-  setTimeout(function () {
-      notification.classList.remove("show"); // Remove the "show" class after 3 seconds
-  }, 3000); // Hide the notification after 3 seconds
+    var notification = document.getElementById("notification");
+    notification.innerHTML = message;
+    notification.classList.add("show");
+    setTimeout(function () {
+        notification.classList.remove("show");
+    }, 3000);
 }
 
+// Function to add a product to the cart modal
 function addToCartModal(productName) {
-    // Check if the item is already in the cart
     var existingCartItem = findCartItem(productName);
 
     if (existingCartItem) {
-        // If the item is in the cart, update the quantity
         updateQuantity(productName, existingCartItem.quantity + 1);
     } else {
-        // If the item is not in the cart, create a new item
-        var listItem = document.createElement("li");
-
-        // Create a div for each cart item
-        var cartItemDiv = document.createElement("div");
-        cartItemDiv.className = "cart-item";
-
-        // Display the product name
-        cartItemDiv.appendChild(document.createTextNode(productName));
-
-        // Create an input field for quantity
-        var quantityInputId = "quantityInput_" + productName;
-        var quantityInput = document.createElement("input");
-        quantityInput.type = "number";
-        quantityInput.value = 1;
-        quantityInput.min = 1;
-        quantityInput.id = quantityInputId;
-        quantityInput.addEventListener("input", function () {
-            // Update the quantity and total price when the user types a number
-            var updatedQuantity = parseInt(quantityInput.value) || 0;
-            updateQuantity(productName, updatedQuantity);
-        });
-        
-        // Append the quantity input to the cart item div
-        cartItemDiv.appendChild(quantityInput);
-
-        // Append the cart item div to the list
-        listItem.appendChild(cartItemDiv);
-
-        // Append the list item to the cart items list
-        document.getElementById("cartItems").appendChild(listItem);
-
-        // Add the product to the cart items array with initial quantity as 1
+        var cartItem = createCartItem(productName);
+        document.getElementById("cartItems").appendChild(cartItem);
         cartItems.push({ productName: productName, quantity: 1 });
-
-        // Update the total price and display it
         updateTotalPrice();
     }
 }
 
+// Function to create a cart item element
+function createCartItem(productName) {
+    var listItem = document.createElement("li");
+    var cartItemDiv = document.createElement("div");
+    cartItemDiv.className = "cart-item";
+    cartItemDiv.appendChild(document.createTextNode(productName));
 
-// Function to update the cart item and the associated input box
-function updateCartItem(cartItem) {
-    cartItem.element.innerHTML = cartItem.productName + " x" + cartItem.quantity;
+    var quantityInput = document.createElement("input");
+    quantityInput.type = "number";
+    quantityInput.value = 1;
+    quantityInput.min = 1;
+    quantityInput.addEventListener("input", function () {
+        updateQuantity(productName, parseInt(quantityInput.value) || 0);
+    });
 
-    // Update the associated input box value
-    var quantityInputId = "quantityInput_" + cartItem.productName;
-    var quantityInput = document.getElementById(quantityInputId);
-    if (quantityInput) {
-        quantityInput.value = cartItem.quantity;
-    }
+    cartItemDiv.appendChild(quantityInput);
+    listItem.appendChild(cartItemDiv);
+    return listItem;
+}
 
-    // Update the total price and display it
+// Function to update the quantity and total price
+function updateQuantity(productName, newQuantity) {
+    var cartItem = findCartItem(productName);
+    cartItem.quantity = newQuantity;
+    updateCartItem(cartItem);
     updateTotalPrice();
 }
 
-
-// Function to update the cart item and the associated dropdown
+// Function to update the cart item element
 function updateCartItem(cartItem) {
     cartItem.element.innerHTML = cartItem.productName + " x" + cartItem.quantity;
-
-    // Update the associated dropdown value
-    var quantityDropdownId = "quantityDropdown_" + cartItem.productName;
-    var quantityDropdown = document.getElementById(quantityDropdownId);
-    if (quantityDropdown) {
-        quantityDropdown.value = cartItem.quantity;
-    }
-
-    // Update the total price and display it
-    updateTotalPrice();
 }
 
+// Function to update the total price
 function updateTotalPrice() {
-  var totalPrice = 0;
+    var totalPrice = cartItems.reduce(function (total, cartItem) {
+        var productPrice = getProductPrice();
+        return total + cartItem.quantity * productPrice;
+    }, 0);
 
-  // Calculate the total price based on cart items
-  for (var i = 0; i < cartItems.length; i++) {
-      var cartItem = cartItems[i];
-      var productPrice = getProductPrice();
-      totalPrice += cartItem.quantity * productPrice;
-  }
-
-    // Display the total price in the cart modal
     document.getElementById("cartTotalPrice").textContent = "Total Price: $" + totalPrice.toFixed(2);
 }
 
-
-
+// Function to retrieve the product price (replace with actual logic)
 function getProductPrice() {
-  // You can implement logic to get the price of each product based on its name
-  // For simplicity, assuming all products have the same price in this example
-  return 25.00; // Replace with actual logic for getting product price
+    return 25.00;
 }
-
 
 // Function to find a cart item by product name
 function findCartItem(productName) {
@@ -212,36 +138,32 @@ function findCartItem(productName) {
     return null;
 }
 
-// Function to update the cart item
-function updateCartItem(cartItem) {
-    cartItem.element.innerHTML = cartItem.productName + " x" + cartItem.quantity;
-    cartItem.element.dataset.quantity = cartItem.quantity;
-}
-
 // Function to handle showing the cart modal
 function openCartModal() {
-  var cartModal = document.getElementById("cartModal");
-  cartModal.style.display = "block";
-
-   // Update the total price when opening the cart modal
-   updateTotalPrice();
+    var cartModal = document.getElementById("cartModal");
+    cartModal.style.display = "block";
+    updateTotalPrice();
 }
 
 // Function to handle closing the cart modal
 function closeCartModal() {
-  var cartModal = document.getElementById("cartModal");
-  cartModal.style.display = "none";
+    var cartModal = document.getElementById("cartModal");
+    cartModal.style.display = "none";
 }
 
+// Function to handle checkout
 function checkout() {
-  // Retrieve selected quantity from the dropdown
-  var quantityDropdown = document.getElementById("quantityDropdown");
-  var selectedQuantity = quantityDropdown.value;
-
-  // Perform checkout logic with the selected quantity
-  // For now, let's just show a notification
-  showNotification("Checkout with quantity: " + selectedQuantity);
-  
-  // Close the cart modal
-  closeCartModal();
+    showNotification("Checkout with quantity: " + getSelectedQuantity());
+    closeCartModal();
 }
+
+// Function to retrieve the selected quantity (replace with actual logic)
+function getSelectedQuantity() {
+    var quantityDropdown = document.getElementById("quantityDropdown");
+    return quantityDropdown.value;
+}
+
+// Call the function to initialize the slideshow when the DOM is ready
+document.addEventListener("DOMContentLoaded", function () {
+    initializeSlideshow();
+});
