@@ -108,10 +108,13 @@ function addToCartModal(productName) {
         // Append the new item to the container that holds all cart items
         document.getElementById("cartItems").appendChild(listItem);
 
+        // Add the new item to the cartItems array
+        cartItems.push({ productName: productName, quantity: 1 });
     }
     // Update the total price and display it
     updateTotalPrice();
 }
+
 
 // Function to update the cart item
 function updateCartItem(cartItem) {
