@@ -184,9 +184,13 @@ function closeCartModal() {
 }
 
 function checkout() {
-    // Retrieve total quantity from the displayed element
-    var totalQuantityElement = document.getElementById("cartTotalQuantity");
-    var totalQuantity = parseInt(totalQuantityElement.textContent.replace("Total Quantity: ", ""));
+    var totalQuantity = 0;
+
+    // Calculate the total price and quantity based on cart items
+    for (var i = 0; i < cartItems.length; i++) {
+        var cartItem = cartItems[i];
+        totalQuantity += cartItem.quantity;
+    }
 
     // Perform checkout logic with the total quantity
     // For now, let's just show a notification
