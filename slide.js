@@ -90,6 +90,7 @@ function showNotification(message) {
     }, 3000); // Hide the notification after 3 seconds
 }
 
+// Function to add or update an item in the cart modal
 function addToCartModal(productName) {
     // Check if the item is already in the cart
     var existingItem = findCartItem(productName);
@@ -97,6 +98,9 @@ function addToCartModal(productName) {
     if (existingItem) {
         // Update the quantity if the product is already in the cart
         existingItem.quantity++;
+        // Update the dataset and text content separately
+        existingItem.element.dataset.quantity = existingItem.quantity;
+        existingItem.element.textContent = productName + " x" + existingItem.quantity;
         updateCartItem(existingItem);
     } else {
         // Add a new item to the cart
@@ -109,11 +113,12 @@ function addToCartModal(productName) {
         document.getElementById("cartItems").appendChild(listItem);
 
         // Add the new item to the cartItems array
-        cartItems.push({ productName: productName, quantity: 1 });
+        cartItems.push({ element: listItem, productName: productName, quantity: 1 });
     }
     // Update the total price and display it
     updateTotalPrice();
 }
+
 
 
 // Function to update the cart item
