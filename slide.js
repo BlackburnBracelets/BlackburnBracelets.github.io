@@ -109,6 +109,22 @@ function addToCartModal(productName) {
         // Display the product name
         cartItemDiv.appendChild(document.createTextNode(productName));
 
+        // Create an input field for quantity
+        var quantityInputId = "quantityInput_" + productName;
+        var quantityInput = document.createElement("input");
+        quantityInput.type = "number";
+        quantityInput.value = 1;
+        quantityInput.min = 1;
+        quantityInput.id = quantityInputId;
+        quantityInput.addEventListener("input", function () {
+            // Update the quantity and total price when the user types a number
+            var updatedQuantity = parseInt(quantityInput.value) || 0;
+            updateQuantity(productName, updatedQuantity);
+        });
+        
+        // Append the quantity input to the cart item div
+        cartItemDiv.appendChild(quantityInput);
+
         // Append the cart item div to the list
         listItem.appendChild(cartItemDiv);
 
