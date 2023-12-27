@@ -96,7 +96,7 @@ function addToCartModal(productName) {
     var existingCartItem = findCartItem(productName);
 
     if (existingCartItem) {
-        // If the item is in the cart, update the quantity in the existing dropdown
+        // If the item is in the cart, update the quantity in the existing input box
         updateQuantity(productName, existingCartItem.quantity + 1);
     } else {
         // If the item is not in the cart, create a new item
@@ -109,22 +109,18 @@ function addToCartModal(productName) {
         // Display the product name
         cartItemDiv.appendChild(document.createTextNode(productName));
 
-        // Create a dropdown for quantity (or update existing one)
-        var quantityDropdownId = "quantityDropdown_" + productName;
-        var quantityDropdown = document.getElementById(quantityDropdownId);
+        // Create an input box for quantity (or update existing one)
+        var quantityInputId = "quantityInput_" + productName;
+        var quantityInput = document.getElementById(quantityInputId);
 
-        if (!quantityDropdown) {
-            quantityDropdown = document.createElement("select");
-            quantityDropdown.id = quantityDropdownId; // Unique ID for each dropdown
-            for (var i = 1; i <= 10; i++) {
-                var option = document.createElement("option");
-                option.value = i;
-                option.text = i;
-                quantityDropdown.appendChild(option);
-            }
+        if (!quantityInput) {
+            quantityInput = document.createElement("input");
+            quantityInput.type = "text";
+            quantityInput.value = 1;
+            quantityInput.id = quantityInputId; // Unique ID for each input box
 
-            // Append the dropdown to the cart item div
-            cartItemDiv.appendChild(quantityDropdown);
+            // Append the input box to the cart item div
+            cartItemDiv.appendChild(quantityInput);
         }
 
         // Append the cart item div to the list
@@ -140,6 +136,22 @@ function addToCartModal(productName) {
         updateTotalPrice();
     }
 }
+
+// Function to update the cart item and the associated input box
+function updateCartItem(cartItem) {
+    cartItem.element.innerHTML = cartItem.productName + " x" + cartItem.quantity;
+
+    // Update the associated input box value
+    var quantityInputId = "quantityInput_" + cartItem.productName;
+    var quantityInput = document.getElementById(quantityInputId);
+    if (quantityInput) {
+        quantityInput.value = cartItem.quantity;
+    }
+
+    // Update the total price and display it
+    updateTotalPrice();
+}
+
 
 // Function to update the cart item and the associated dropdown
 function updateCartItem(cartItem) {
