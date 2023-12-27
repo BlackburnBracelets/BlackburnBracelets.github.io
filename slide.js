@@ -1,4 +1,3 @@
-User
 // Initialize slide indexes array
 var slideIndexes = [];
 
