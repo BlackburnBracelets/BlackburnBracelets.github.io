@@ -93,50 +93,22 @@ function showNotification(message) {
 
 function addToCartModal(productName) {
     // Check if the item is already in the cart
-    var existingCartItem = findCartItem(productName);
+    var existingItem = findCartItem(productName);
 
-    if (existingCartItem) {
-        // If the item is in the cart, update the quantity
-        updateQuantity(productName, existingCartItem.quantity + 1);
+    if (existingItem) {
+        // Update the quantity if the product is already in the cart
+        existingItem.quantity++;
+        updateCartItem(existingItem);
     } else {
-        // If the item is not in the cart, create a new item
+        // Add a new item to the cart
         var listItem = document.createElement("li");
-
-        // Create a div for each cart item
-        var cartItemDiv = document.createElement("div");
-        cartItemDiv.className = "cart-item";
-
-        // Display the product name
-        cartItemDiv.appendChild(document.createTextNode(productName));
-
-        // Create an input field for quantity
-        var quantityInputId = "quantityInput_" + productName;
-        var quantityInput = document.createElement("input");
-        quantityInput.type = "number";
-        quantityInput.value = 1;
-        quantityInput.min = 1;
-        quantityInput.id = quantityInputId;
-        quantityInput.addEventListener("input", function () {
-            // Update the quantity and total price when the user types a number
-            var updatedQuantity = parseInt(quantityInput.value) || 0;
-            updateQuantity(productName, updatedQuantity);
-        });
-        
-        // Append the quantity input to the cart item div
-        cartItemDiv.appendChild(quantityInput);
-
-        // Append the cart item div to the list
-        listItem.appendChild(cartItemDiv);
-
-        // Append the list item to the cart items list
-        document.getElementById("cartItems").appendChild(listItem);
-
-        // Add the product to the cart items array with initial quantity as 1
-        cartItems.push({ productName: productName, quantity: 1 });
-
+        listItem.dataset.productName = productName;
+        listItem.dataset.quantity = 1;
+        listItem.appendChild(document.createTextNode(productName + " x1"));
+        cartItems.appendChild(listItem);
+    }
         // Update the total price and display it
         updateTotalPrice();
-    }
 }
 
 
