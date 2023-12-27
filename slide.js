@@ -131,7 +131,7 @@ function updateTotalPrice() {
     for (var i = 0; i < cartItems.length; i++) {
         var cartItem = cartItems[i];
         var productPrice = getProductPrice();
-        totalPrice += cartItem.quantity * productPrice;
+        totalPrice += cartItem.quantity * parseFloat(productPrice);
     }
 
     // Display the total price in the cart modal
@@ -189,4 +189,4 @@ function checkout() {
   
   // Close the cart modal
   closeCartModal();
-}
+}   
