@@ -134,7 +134,6 @@ function updateTotalPrice() {
         var productPrice = getProductPrice();
         totalPrice += cartItem.element.dataset.quantity * parseFloat(productPrice);
         totalQuantity += parseInt(cartItem.element.dataset.quantity);
-        console.log(totalPrice,totalQuantity );
     }
 
     // Display the total price and quantity in the cart modal
