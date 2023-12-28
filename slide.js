@@ -134,8 +134,8 @@ function updateTotalPrice() {
     for (var i = 0; i < cartItems.length; i++) {
         var cartItem = cartItems[i];
         var productPrice = getProductPrice();
-        totalPrice += cartItem.quantity * parseFloat(productPrice);
-        totalQuantity += cartItem.quantity;
+        totalPrice += cartItem.element.dataset.quantity * parseFloat(productPrice);
+        totalQuantity += parseInt(cartItem.element.dataset.quantity);
     }
 
     // Display the total price and quantity in the cart modal
@@ -189,7 +189,7 @@ function checkout() {
     // Calculate the total price and quantity based on cart items
     for (var i = 0; i < cartItems.length; i++) {
         var cartItem = cartItems[i];
-        totalQuantity += cartItem.quantity;
+        totalQuantity += parseInt(cartItem.element.dataset.quantity);
     }
 
     // Perform checkout logic with the total quantity
