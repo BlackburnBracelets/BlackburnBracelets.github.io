@@ -195,6 +195,9 @@ function checkout() {
     // For now, let's just show a notification
     showNotification("Checkout with quantity: " + totalQuantity);
 
+    // Clear the cartItems array
+    cartItems = [];
+
     // Close the cart modal
     closeCartModal();
 }
