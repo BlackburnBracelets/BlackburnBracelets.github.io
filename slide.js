@@ -119,8 +119,6 @@ function addToCartModal(productName) {
     updateTotalPrice();
 }
 
-
-
 // Function to update the cart item
 function updateCartItem(cartItem) {
     cartItem.element.innerHTML = cartItem.productName + " x" + cartItem.quantity;
@@ -136,6 +134,7 @@ function updateTotalPrice() {
         var productPrice = getProductPrice();
         totalPrice += cartItem.element.dataset.quantity * parseFloat(productPrice);
         totalQuantity += parseInt(cartItem.element.dataset.quantity);
+        console.log(totalPrice,totalQuantity );
     }
 
     // Display the total price and quantity in the cart modal
