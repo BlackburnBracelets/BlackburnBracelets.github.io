@@ -182,6 +182,15 @@ function closeCartModal() {
   cartModal.style.display = "none";
 }
 
+function clearCart() {
+    // Clear the cartItems array and the content of the cart modal
+    cartItems = [];
+    document.getElementById("cartItems").innerHTML = "";
+
+    // Update the total price to reflect the cleared cart
+    updateTotalPrice();
+}
+
 function checkout() {
     var totalQuantity = 0;
 
@@ -196,7 +205,7 @@ function checkout() {
     showNotification("Checkout with quantity: " + totalQuantity);
 
     // Clear the cartItems array
-    cartItems = [];
+    clearCart();
 
     // Close the cart modal
     closeCartModal();
